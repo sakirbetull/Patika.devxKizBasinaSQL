@@ -2,9 +2,10 @@
 
 # DVD Rental Veri Tabanı - Veri Analisti Ödevi
 
-Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılmasını ve analiz edilmesini içerir. Aşağıda verilen SQL sorguları, veri tabanındaki film ve müşteri verilerini çeşitli filtrelerle incelemektedir.
+Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılmasını ve analiz edilmesini içerir. Aşağıdaki senaryolar kapsamında, çeşitli filtreleme işlemleri yapılmıştır.
 
 ## Sorgular
+## ÖDEV 1
 
 1. **Film Tablosunda `title` ve `description` Sütunlarındaki Veriler**
    ```sql
@@ -35,4 +36,26 @@ Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılm
 
 
 <img width="1079" alt="Ekran görüntüsü 2025-05-08 213044" src="https://github.com/user-attachments/assets/55830f41-9b9a-4b30-a848-c5b440ad0499" />
+
+## ÖDEV 2
+
+1. **Replacement Cost Değeri 12.99 ile 16.99 Arasında Olan Filmler (BETWEEN - AND)**
+   ```sql
+   select * from film
+   where replacement_cost between 12.99 and 16.98;
+   ```
+   
+2️. **Actor Tablosunda First Name 'Penelope', 'Nick' veya 'Ed' Olanlar (IN Kullanımı)**
+   ```sql
+   select * from actor
+   where first_name in ('Penelope', 'Nick', 'Ed');
+   ```
+
+3️. **Film Tablosunda Belirli rental_rate ve replacement_cost Olan Filmler (IN Kullanımı)**
+   ```sql
+   select * from film
+   where rental_rate in (0.99, 2.99, 4.99) and replacement_cost in (12.99, 15.99, 28.99);
+   ```
+
+<img width="1079" alt="Ekran görüntüsü 2025-05-08 221647" src="https://github.com/user-attachments/assets/8320fea2-ba7f-4082-ac7a-ddfd1e5ae0f9" />
 
