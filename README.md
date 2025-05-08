@@ -25,12 +25,14 @@ Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılm
    ```sql
    select * from customer
    where first_name = 'Mary';
--- Smith
    ```
+   
 5. **Film Tablosundaki length 50'den Büyük Olmayan ve rental_rate 2.99 veya 4.99 Olmayan Verileri Sıralama**
    ```sql
    select * from film 
    where not (length > 50 and (rental_rate = 2.99 or rental_rate = 4.99));
    ```
+
+
 <img width="1079" alt="Ekran görüntüsü 2025-05-08 213044" src="https://github.com/user-attachments/assets/55830f41-9b9a-4b30-a848-c5b440ad0499" />
 
