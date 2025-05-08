@@ -92,3 +92,33 @@ Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılm
 * column ILIKE 'pattern' ifadesi, aslında column ~~* 'pattern'
 
   <img width="1075" alt="Ekran görüntüsü 2025-05-08 233031" src="https://github.com/user-attachments/assets/c9b7ae0d-e276-44b8-a0f7-456d3a410204" />
+
+## ÖDEV 4
+
+1️. **`replacement_cost` Sütunundaki Farklı Değerleri Listeleme**
+   ```sql
+   select distinct(replacement_cost) from film;
+   ```
+
+2️. **replacement_cost Sütununda Kaç Farklı Değer Olduğunu Hesaplama**
+   ```sql
+   select count(distinct replacement_cost) from film;
+   ```
+
+3️. **İsmi 'T' Harfiyle Başlayan ve Rating Değeri 'G' Olan Film Sayısı**
+   ```sql
+   select count(*) from film
+   where title like 'T%' and rating = 'G';
+   ```
+
+4️. **Tam Olarak 5 Karakter Uzunluğunda Ülke İsimlerinin Sayısı**
+   ```sql
+   select count(*) from country
+   where country like '_____';
+   ```
+
+5️. **Şehir İsimlerinden 'R' ya da 'r' Harfiyle Bitenlerin Sayısı**
+   ```sql
+   select count(*) from city 
+   where city ilike '%r';
+   ```
