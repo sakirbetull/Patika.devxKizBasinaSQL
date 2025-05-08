@@ -59,3 +59,5 @@ Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılm
 
 <img width="1079" alt="Ekran görüntüsü 2025-05-08 221647" src="https://github.com/user-attachments/assets/8320fea2-ba7f-4082-ac7a-ddfd1e5ae0f9" />
 
+
+## ÖDEV 3
