@@ -44,7 +44,7 @@ Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılm
    select * from film
    where replacement_cost between 12.99 and 16.98;
    ```
-   
+
 2️. **Actor Tablosunda First Name 'Penelope', 'Nick' veya 'Ed' Olanlar (IN Kullanımı)**
    ```sql
    select * from actor
@@ -61,3 +61,34 @@ Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılm
 
 
 ## ÖDEV 3
+
+
+1. **'A' Harfi ile Başlayıp `'a'` Harfi ile Biten Ülke İsimleri**
+   ```sql
+   select * from country
+   where country like 'A%a';
+   ```
+   
+2. **En Az 6 Karakter Uzunluğunda ve 'n' Harfi ile Biten Ülkeler**
+   ```sql
+   select * from country
+   where country like '%_____%n';
+   ```
+
+3. Film İsminde En Az 4 Tane 'T' Harfi Geçen Filmler
+   ```sql
+   select * from film
+   where title ilike '%t%t%t%t%';
+   ```
+
+4. **'C' ile Başlayan, Uzunluğu 90'dan Büyük ve Kirası 2.99 Olan Filmler**
+   ```sql
+   select * from film
+   where title ilike 'C%' AND length > 90 AND rental_rate = 2.99;
+   ```
+   
+* column LIKE 'pattern' ifadesi, aslında column ~~ 'pattern'
+
+* column ILIKE 'pattern' ifadesi, aslında column ~~* 'pattern'
+
+  <img width="1075" alt="Ekran görüntüsü 2025-05-08 233031" src="https://github.com/user-attachments/assets/c9b7ae0d-e276-44b8-a0f7-456d3a410204" />
