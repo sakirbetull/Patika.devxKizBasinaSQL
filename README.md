@@ -268,3 +268,115 @@ Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılm
    DELETE FROM employee WHERE birthday < '2020-01-01';
    DELETE FROM employee WHERE name = 'Ali';
    ```
+
+
+# ÖDEV 9
+
+1. **Şehir ve ülke isimlerini birlikte listeleme (city & country)**
+
+   ```sql
+   SELECT c.city, co.country
+   FROM city c
+   INNER JOIN country co ON c.country_id = co.country_id;
+   ```
+2. **Ödeme ID’leri ile müşteri ad-soyad bilgilerini listeleme (payment & customer)**
+   ```sql
+   SELECT p.payment_id, c.first_name || ' ' || c.last_name AS full_name
+   FROM customer c
+   INNER JOIN payment p ON c.customer_id = p.customer_id;
+   ```
+
+3. **Kiralama işlemleri ile müşteri ad-soyad bilgilerini listeleme (rental & customer)**
+   ```sql
+   SELECT c.first_name || ' ' || c.last_name AS "name and surname"
+   FROM customer c
+   INNER JOIN rental r ON c.customer_id = r.customer_id;
+   ```
+
+# ÖDEV 10
+
+1. **Şehir ve ülke isimlerini LEFT JOIN ile listele**
+   ```sql
+   SELECT c.city, co.country
+   FROM city c
+   LEFT JOIN country co ON c.country_id = co.country_id;
+   ```
+   
+2. **Ödeme ID ve müşteri ad-soyadını RIGHT JOIN ile listele**
+   ```sql
+   SELECT p.payment_id, c.first_name || ' ' || c.last_name AS customer_name
+   FROM customer c
+   RIGHT JOIN payment p ON c.customer_id = p.customer_id;
+   ```
+
+3. **Kiralama ID ve müşteri ad-soyadını FULL JOIN ile listele**
+   ```sql
+   SELECT r.rental_id, c.first_name || ' ' || c.last_name AS customer_name
+   FROM customer c
+   FULL JOIN rental r ON c.customer_id = r.customer_id;
+   ```
+
+# ÖDEV 11
+
+1. **Actor ve Customer tablolarındaki tüm first_name verilerini sıralama**
+   ```sql
+   SELECT first_name FROM actor
+   UNION
+   SELECT first_name FROM customer;
+   ```
+
+2. **Actor ve Customer tablolarındaki first_name sütunlarının kesişen verilerini sıralama**
+   ```sql
+   SELECT first_name FROM actor
+   INTERSECT
+   SELECT first_name FROM customer;
+   ```
+   
+3. **Sadece Actor tablosunda olup Customer tablosunda olmayan first_name verilerini sıralama**
+   ```sql
+   SELECT first_name FROM actor
+   EXCEPT
+   SELECT first_name FROM customer;
+   ```
+   
+4. **Sadece Customer tablosunda olup Actor tablosunda olmayan first_name verilerini sıralama**
+   ```sql
+   SELECT first_name FROM customer
+   EXCEPT
+   SELECT first_name FROM actor;
+   ```
+
+# ÖDEV 12
+
+1. **Ortalama film uzunluğundan uzun olan film sayısı:**
+   ```sql
+   SELECT COUNT(*) 
+   FROM film
+   WHERE length > (SELECT AVG(length) FROM film);
+   ```
+   
+2. **En yüksek rental_rate'e sahip film sayısı:**
+   ```sql
+   SELECT COUNT(*) 
+   FROM film
+   WHERE rental_rate = (SELECT MAX(rental_rate) FROM film);
+   ```
+   
+3. **En düşük rental_rate ve en düşük replacement_cost değerine sahip filmleri listele:**
+   ```sql
+   SELECT * 
+   FROM film 
+   WHERE rental_rate = (SELECT MIN(rental_rate) FROM film)
+     AND replacement_cost = (SELECT MIN(replacement_cost) FROM film);
+   ```
+   
+4. **En fazla sayıda alışveriş yapan müşterileri (customer) sıralayalım:**
+   ```sql
+   SELECT customer_id, COUNT(*) AS payment_count
+   FROM payment
+   GROUP BY customer_id
+   ORDER BY payment_count DESC
+   limit 5;
+   ```
+
+   
