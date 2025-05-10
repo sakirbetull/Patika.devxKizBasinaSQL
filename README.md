@@ -129,4 +129,89 @@ Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılm
 **PSQL, PostgreSQL ile birlikte gelen terminal tabanlı bir kullanıcı arayüzüdür.**
 **PSQL sayesinde komut satırında sorgular yazıp, sonuçlarını görebiliriz.**
 
+## ÖDEV 5
+
+1️. **Sonu 'n' Harfi ile Biten En Uzun 5 Film**
+   ```sql
+   select * from film
+   where title like '%n'
+   order by length desc
+   limit 5;
+   ```
+
+2️. **Sonu 'n' Harfi ile Biten ve Uzunluk Bakımından 6. ila 10. Sıradaki Filmler**
+   ```sql
+   select * from film
+   where title like '%n'
+   order by length desc
+   offset 5
+   limit 5;
+   ```
+
+3️. **store_id = 1 Olan Müşterilerden last_name Sırasına Göre İlk 4 Kayıt**
+   ```sql
+   select * from customer
+   where store_id = 1
+   order by last_name desc
+   limit 4;
+   ```
+
+<img width="1076" alt="Ekran görüntüsü 2025-05-10 155834" src="https://github.com/user-attachments/assets/246aa0c0-6f01-4bf0-84b2-14ff93eadd3e" />
+
+
+# ÖDEV 6
+
+1️. **Rental Rate Ortalaması**
+   ```sql
+   select avg(rental_rate) from film;
+   ```
+
+2️. **Baş Harfi 'C' Olan Film Sayısı**
+   ```sql
+   select count(*) from film
+   where title like 'C%';
+   ```
+
+3️. **Kiralama Ücreti 0.99 Olan Filmler Arasındaki En Uzun Süre**
+   ```sql
+   select max(length) from film
+   where rental_rate = 0.99;
+   ```
+
+4️. **150 Dakikadan Uzun Filmler Arasında Kaç Farklı replacement_cost Değeri Var?**
+   ```sql
+   select count(distinct replacement_cost) from film
+   where length > 150;
+   ```
+
+# ÖDEV 7
+
+1️. **Rating Değerlerine Göre Film Sayısı**
+   ```sql
+   select count(*), rating from film
+   group by rating;
+   ```
+
+2️. **50'den Fazla Filme Sahip replacement_cost Değerleri**
+   ```sql
+   select count(*), replacement_cost from film
+   group by replacement_cost
+   having count(*) > 50
+   order by 1;
+   ```
+
+3️. **store_id Bazlı Müşteri Sayıları**
+   ```sql
+   select store_id, count(customer_id) from customer
+   group by store_id;
+   ```
+
+4️. **En Fazla Şehir Sayısına Sahip Ülke (country_id)**
+   ```sql
+   select country_id, count(city_id) as city_count
+   from city
+   group by country_id
+   order by city_count desc
+   limit 1;
+   ```
 
