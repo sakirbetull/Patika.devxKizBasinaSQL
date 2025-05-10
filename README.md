@@ -215,3 +215,56 @@ Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılm
    limit 1;
    ```
 
+
+# ÖDEV 8
+
+1. **employee tablosunu oluşturma:**
+   ```sql
+   CREATE TABLE employee (
+   id INTEGER,
+   name VARCHAR(50),
+   birthday DATE,
+   email VARCHAR(100)
+   );
+   ```
+
+2. **Veri ekleme işlemi**
+   ```sql
+   INSERT INTO employee (id, name, birthday, email) VALUES
+   (1, 'Hershel', '2021-11-02', 'hstoffers0@mozilla.com'),
+   (2, 'Zak', '2023-03-15', 'zbrussels1@delicious.com'),
+   ...
+   (50, 'Desdemona', '2020-05-17', 'dstudders1d@ezinearticles.com');
+   ```
+
+3. **UPDATE İşlemleri**
+
+   ```sql
+   UPDATE employee
+   SET name = 'Updated Name'
+   WHERE id = 1;
+
+   UPDATE employee
+   SET email = 'newemail@example.com'
+   WHERE name = 'Zak';
+
+   UPDATE employee
+   SET birthday = '1990-01-01'
+   WHERE id = 10;
+
+   UPDATE employee
+   SET name = 'Ali'
+   WHERE email = 'dstudders1d@ezinearticles.com';
+
+   UPDATE employee
+   SET email = 'ali@example.com'
+   WHERE name = 'Ali';
+   ```
+4. **DELETE İşlemleri**
+   ```sql
+   DELETE FROM employee WHERE name LIKE 'A%';
+   DELETE FROM employee WHERE id = 5;
+   DELETE FROM employee WHERE email = 'zbrussels1@delicious.com';
+   DELETE FROM employee WHERE birthday < '2020-01-01';
+   DELETE FROM employee WHERE name = 'Ali';
+   ```
