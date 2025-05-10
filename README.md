@@ -122,3 +122,11 @@ Bu proje, `dvdrental` örnek veri tabanı kullanarak farklı sorguların yazılm
    select count(*) from city 
    where city ilike '%r';
    ```
+
+
+**PSQL**
+
+**PSQL, PostgreSQL ile birlikte gelen terminal tabanlı bir kullanıcı arayüzüdür.**
+**PSQL sayesinde komut satırında sorgular yazıp, sonuçlarını görebiliriz.**
+
+
